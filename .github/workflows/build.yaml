@@ -15,6 +15,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Download snapshot from  AUR
+        run: git submodule update --init --recursive
+
+      - name: Update snapshot to Latest commit
+        run: git submodule update --remote --merge
       
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -38,6 +44,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Download snapshot from  AUR
+        run: git submodule update --init --recursive
+
+      - name: Update snapshot to Latest commit
+        run: git submodule update --remote --merge
+
       - name: Validate PKGBUILD
         id: validate-pkgbuild
         uses: 2m/arch-pkgbuild-builder@v1.18
@@ -60,6 +72,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Download snapshot from  AUR
+        run: git submodule update --init --recursive
+
+      - name: Update snapshot to Latest commit
+        run: git submodule update --remote --merge
+
       - name: Validate PKGBUILD
         id: validate-pkgbuild
         uses: 2m/arch-pkgbuild-builder@v1.18
@@ -81,6 +99,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Download snapshot from  AUR
+        run: git submodule update --init --recursive
+
+      - name: Update snapshot to Latest commit
+        run: git submodule update --remote --merge
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild

@@ -33,7 +33,7 @@ jobs:
           pkgname: google-chrome/
 
       - name: Create Arch package checksum file
-        run:
+        run: |
           sudo chown -R $USER .
           md5sum google-chrome/*.zst >> google-chrome/google-chrome-x86_64.pkg.tar.zst.md5sum
 
@@ -69,7 +69,7 @@ jobs:
           pkgname: huggle/
 
       - name: Create Arch package checksum file
-        run:
+        run: |
           sudo chown -R $USER .
           md5sum huggle/*.zst >> huggle/huggle-x86_64.pkg.tar.zst.md5sum
 
@@ -104,7 +104,7 @@ jobs:
           pkgname: rstudio/
 
       - name: Create Arch package checksum file
-        run:
+        run: |
           sudo chown -R $USER .
           md5sum rstudio/*.zst >> rstudio/rstudio-x86_64.pkg.tar.zst.md5sum
 
@@ -140,7 +140,7 @@ jobs:
           pkgname: twinejs/
 
       - name: Create Arch package checksum file
-        run:
+        run: |
           sudo chown -R $USER .
           md5sum twinejs/*.zst >> twinejs/twinejs-x86_64.pkg.tar.zst.md5sum
 

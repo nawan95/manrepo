@@ -1,0 +1,12 @@
+[submodule "rstudio"]
+	path = rstudio
+	url = https://aur.archlinux.org/rstudio-desktop-bin.git
+[submodule "google-chrome"]
+	path = google-chrome
+	url = https://aur.archlinux.org/google-chrome.git
+[submodule "huggle"]
+	path = huggle
+	url = https://aur.archlinux.org/huggle.git
+[submodule "twinejs"]
+	path = twinejs
+	url = https://aur.archlinux.org/twinejs-standalone.git

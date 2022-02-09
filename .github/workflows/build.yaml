@@ -170,12 +170,6 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
 
-      - name: Install and Build 🔧
-        run: |
-          sudo pacman -Syu curl git --noconfirm
-          curl https://raw.githubusercontent.com/jayanta525/apindex-v2/master/sudo-install.sh | bash
-          apindex .
-
       - name: Create database
         run: |
           sudo pacman -Syu repose --noconfirm

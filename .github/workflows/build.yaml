@@ -175,6 +175,9 @@ jobs:
           pacman -Syu repose --noconfirm
           repose -zv repo.db .
 
+      - name: Install openssh
+        run: pacman -Syu openssh --noconfirm
+
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:

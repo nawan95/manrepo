@@ -26,7 +26,7 @@ jobs:
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
-        uses: 2m/arch-pkgbuild-builder@v1.18
+        uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
         with:
           debug: true
           target: pkgbuild
@@ -62,7 +62,7 @@ jobs:
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
-        uses: 2m/arch-pkgbuild-builder@v1.18
+        uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
         with:
           debug: true
           target: pkgbuild
@@ -97,7 +97,7 @@ jobs:
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
-        uses: 2m/arch-pkgbuild-builder@v1.18
+        uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
         with:
           debug: true
           target: pkgbuild
@@ -133,7 +133,7 @@ jobs:
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
-        uses: 2m/arch-pkgbuild-builder@v1.18
+        uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
         with:
           debug: true
           target: pkgbuild

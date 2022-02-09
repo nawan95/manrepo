@@ -129,6 +129,14 @@ jobs:
     needs: [Build_Twine]
 
     steps:
+      - uses: actions/download-artifact@v2
+
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
+
+      - name: Display structure of downloaded files
+        run: ls -R
+
       - name: Install and Build 🔧
         run: |
           sudo apt-get update

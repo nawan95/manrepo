@@ -172,7 +172,7 @@ jobs:
 
       - name: Create database
         run: |
-          sudo pacman -Syu repose --noconfirm
+          pacman -Syu repose --noconfirm
           repose -zv repo.db .
 
       - name: Install SSH key

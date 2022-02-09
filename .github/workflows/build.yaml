@@ -172,13 +172,13 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          sudo pacman -Syu curl git
+          sudo pacman -Syu curl git --noconfirm
           curl https://raw.githubusercontent.com/jayanta525/apindex-v2/master/sudo-install.sh | bash
           apindex .
 
       - name: Create database
         run: |
-          sudo pacman -Syu repose
+          sudo pacman -Syu repose --noconfirm
           repose -zv repo.db .
 
       - name: Install SSH key

@@ -173,6 +173,7 @@ jobs:
       - name: Create database
         run: |
           pacman -Syu repose --noconfirm
+          cd artifact
           repose -zv repo.db .
 
       - name: Install openssh
@@ -185,5 +186,10 @@ jobs:
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
           if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
 
+      - name: Install rsync
+        run: pacman -Syu rsync --noconfirm
+
       - name: rsync over ssh
-        run: rsync -avz . calibreg@103.153.3.20:/home/calibreg/public_html/
+        run: |
+          cd artifact
+          rsync -avz . calibreg@103.153.3.20:/home/calibreg/public_html/ .

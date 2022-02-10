@@ -192,4 +192,4 @@ jobs:
       - name: rsync over ssh
         run: |
           cd artifact
-          rsync -avz . calibreg@103.153.3.20:/home/calibreg/public_html/ .
+          rsync -avz ./artifact/ calibreg@103.153.3.20:/home/calibreg/public_html/ .

@@ -179,22 +179,12 @@ jobs:
       - name: Install openssh
         run: pacman -Syu openssh --noconfirm
 
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
+      - name: deploy file
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
-          key: ${{ secrets.SSHKEY }}
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-          if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
-
-      - name: Install rsync
-        run: pacman -Syu rsync --noconfirm
-
-      - name: Upload to webserver
-        uses: burnett01/rsync-deployments@5.2
-        with:
-          switches: -aevz
-          path: artifact/
-          remote_path: /home/calibreg/public_html/
-          remote_host: 103.153.3.20
-          remote_user: calibreg
-          remote_key: ${{ secrets.DEPLOY_KEY }}
+          username: 'calibreg'
+          server: '103.153.3.20'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
+          local_path: './artifact/*'
+          remote_path: '/home/calibreg/public_html'
+          args: '-o ConnectTimeout=10'

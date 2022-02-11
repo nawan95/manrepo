@@ -190,4 +190,4 @@ jobs:
         run: pacman -Syu rsync --noconfirm
 
       - name: rsync over ssh
-        run: rsync -avz "ssh -i /root/.ssh/id_rsa" ./artifact/ calibreg@103.153.3.20:/home/calibreg/public_html/ .
+        run: rsync -aevz "ssh -i /root/.ssh/id_rsa" ./artifact/ calibreg@103.153.3.20:/home/calibreg/public_html/ .

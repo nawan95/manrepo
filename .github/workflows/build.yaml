@@ -189,5 +189,12 @@ jobs:
       - name: Install rsync
         run: pacman -Syu rsync --noconfirm
 
-      - name: rsync over ssh
-        run: rsync -aevz "ssh -i /root/.ssh/id_rsa" ./artifact/ calibreg@103.153.3.20:/home/calibreg/public_html/ .
+      - name: Upload to webserver
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: -aevz
+          path: artifact/
+          remote_path: /home/calibreg/public_html/
+          remote_host: 103.153.3.20
+          remote_user: calibreg
+          remote_key: ${{ secrets.DEPLOY_KEY }}

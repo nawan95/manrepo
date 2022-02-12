@@ -174,8 +174,7 @@ jobs:
         run: |
           cd artifact
           ls -A
-          pacman -Syu repose --noconfirm
-          repose -zv repo.db .
+          repo-add repo.db.tar.gz *.pkg.tar.zst .
 
       - name: Install openssh
         run: pacman -Syu openssh --noconfirm

@@ -3,8 +3,8 @@ name: Build Arch/Manjaro Package
 
 on:
   push:
-    tags:
-      - '*.*.*'
+    branches:
+      - master
   workflow_dispatch:
 
 

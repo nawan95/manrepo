@@ -10,3 +10,6 @@
 [submodule "twinejs"]
 	path = twinejs
 	url = https://aur.archlinux.org/twinejs-standalone.git
+[submodule "hunspell-id"]
+	path = hunspell-id
+	url = https://aur.archlinux.org/hunspell-id.git

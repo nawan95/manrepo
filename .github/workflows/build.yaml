@@ -21,7 +21,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git submodule foreach git pull origin master
+        run: git submodule update
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild

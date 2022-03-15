@@ -25,6 +25,9 @@ jobs:
           cd google-chrome
           git pull --recurse-submodules origin master
 
+      - name: Set pull to fast-forward only
+        run: git config pull.ff only
+
       - name: Validate PKGBUILD
         id: validate-pkgbuild
         uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945

@@ -22,8 +22,8 @@ jobs:
 
       - name: Update snapshot to Latest commit
         run: |
-        cd google-chrome
-        git pull --recurse-submodules origin master
+          cd google-chrome
+          git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -60,8 +60,8 @@ jobs:
 
       - name: Update snapshot to Latest commit
         run: |
-        cd huggle
-        git pull --recurse-submodules origin master
+          cd huggle
+          git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -98,8 +98,8 @@ jobs:
 
       - name: Update snapshot to Latest commit
         run: |
-        cd rstudio
-        git pull --recurse-submodules origin master
+          cd rstudio
+          git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -136,8 +136,8 @@ jobs:
 
       - name: Update snapshot to Latest commit
         run: |
-        cd twinejs
-        git pull --recurse-submodules origin master
+          cd twinejs
+          git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -162,8 +162,8 @@ jobs:
 
       - name: Update snapshot to Latest commit
         run: |
-        cd hunspell-id
-        git pull --recurse-submodules origin master
+          cd hunspell-id
+          git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild

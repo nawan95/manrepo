@@ -21,7 +21,9 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git pull --recurse-submodules origin master
+        run: |
+        cd google-chrome
+        git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -57,7 +59,9 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git pull --recurse-submodules origin master
+        run: |
+        cd huggle
+        git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -93,7 +97,9 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git pull --recurse-submodules origin master
+        run: |
+        cd rstudio
+        git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -129,7 +135,9 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git pull --recurse-submodules origin master
+        run: |
+        cd twinejs
+        git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -153,7 +161,9 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git pull --recurse-submodules origin master
+        run: |
+        cd hunspell-id
+        git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild

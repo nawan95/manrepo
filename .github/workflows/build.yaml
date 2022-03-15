@@ -21,7 +21,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git pull --recurse-submodules
+        run: git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -57,7 +57,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git pull --recurse-submodules
+        run: git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -93,7 +93,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git pull --recurse-submodules
+        run: git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -129,7 +129,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git pull --recurse-submodules
+        run: git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -153,7 +153,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Update snapshot to Latest commit
-        run: git pull --recurse-submodules
+        run: git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild

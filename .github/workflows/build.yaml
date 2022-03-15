@@ -177,7 +177,7 @@ jobs:
 
   Deploy:
     runs-on: ubuntu-latest
-    needs: [Build_Twine]
+    needs: [Build_Hunspell]
     container:
       image: archlinux
       options: --privileged

@@ -26,7 +26,7 @@ jobs:
       - name: Update snapshot to Latest commit
         run: |
           cd google-chrome
-          git pull --recurse-submodules
+          git pull --recurse-submodules origin master
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild

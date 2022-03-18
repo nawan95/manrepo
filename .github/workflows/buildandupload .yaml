@@ -1,0 +1,232 @@
+name: Build Arch/Manjaro Package
+
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+
+jobs:
+  Build_Google_Chrome:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: Set pull to fast-forward only
+        run: git config pull.ff only
+
+      - name: Download snapshot from  AUR
+        run: git submodule update --init --recursive
+
+      - name: Update snapshot to Latest commit
+        run: |
+          cd google-chrome
+          git pull --recurse-submodules origin master
+
+      - name: Validate PKGBUILD
+        id: validate-pkgbuild
+        uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
+        with:
+          debug: true
+          target: pkgbuild
+          pkgname: google-chrome/
+
+      - name: Create Arch package checksum file
+        run: |
+          sudo chown -R $USER .
+          md5sum google-chrome/*.zst >> google-chrome/google-chrome-x86_64.pkg.tar.zst.md5sum
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: |
+            google-chrome/*.pkg.tar.zst
+            google-chrome/*.md5sum
+
+  Build_Huggle:
+    runs-on: ubuntu-latest
+    needs: [Build_Google_Chrome]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+      - name: Set pull to fast-forward only
+        run: git config pull.ff only
+
+      - name: Download snapshot from  AUR
+        run: git submodule update --init --recursive
+
+      - name: Update snapshot to Latest commit
+        run: |
+          cd huggle
+          git pull --recurse-submodules origin master
+
+      - name: Validate PKGBUILD
+        id: validate-pkgbuild
+        uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
+        with:
+          debug: true
+          target: pkgbuild
+          pkgname: huggle/
+
+      - name: Create Arch package checksum file
+        run: |
+          sudo chown -R $USER .
+          md5sum huggle/*.zst >> huggle/huggle-x86_64.pkg.tar.zst.md5sum
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: |
+            huggle/*.pkg.tar.zst
+            huggle/*.md5sum
+
+  Build_RStudio_Desktop:
+    runs-on: ubuntu-latest
+    needs: [Build_Huggle]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: Set pull to fast-forward only
+        run: git config pull.ff only
+
+      - name: Download snapshot from  AUR
+        run: git submodule update --init --recursive
+
+      - name: Update snapshot to Latest commit
+        run: |
+          cd rstudio
+          git pull --recurse-submodules origin master
+
+      - name: Validate PKGBUILD
+        id: validate-pkgbuild
+        uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
+        with:
+          debug: true
+          target: pkgbuild
+          pkgname: rstudio/
+
+      - name: Create Arch package checksum file
+        run: |
+          sudo chown -R $USER .
+          md5sum rstudio/*.zst >> rstudio/rstudio-x86_64.pkg.tar.zst.md5sum
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: |
+            rstudio/*.pkg.tar.zst
+            rstudio/*.md5sum
+
+  Build_Twine:
+    runs-on: ubuntu-latest
+    needs: [Build_RStudio_Desktop]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: Set pull to fast-forward only
+        run: git config pull.ff only
+
+      - name: Download snapshot from  AUR
+        run: git submodule update --init --recursive
+
+      - name: Update snapshot to Latest commit
+        run: |
+          cd twinejs
+          git pull --recurse-submodules origin master
+
+      - name: Validate PKGBUILD
+        id: validate-pkgbuild
+        uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
+        with:
+          debug: true
+          target: pkgbuild
+          pkgname: twinejs/
+ 
+  Build_Hunspell:
+    runs-on: ubuntu-latest
+    needs: [Build_Twine]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: Set pull to fast-forward only
+        run: git config pull.ff only
+
+      - name: Download snapshot from  AUR
+        run: git submodule update --init --recursive
+
+      - name: Update snapshot to Latest commit
+        run: |
+          cd hunspell-id
+          git pull --recurse-submodules origin master
+
+      - name: Validate PKGBUILD
+        id: validate-pkgbuild
+        uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
+        with:
+          debug: true
+          target: pkgbuild
+          pkgname: hunspell-id/
+
+      - name: Create Arch package checksum file
+        run: |
+          sudo chown -R $USER .
+          md5sum hunspell-id/*.zst >> hunspell-id/hunspell-id-x86_64.pkg.tar.zst.md5sum
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: |
+            hunspell-id/*.pkg.tar.zst
+            hunspell-id/*.md5sum
+
+  Deploy:
+    runs-on: ubuntu-latest
+    needs: [Build_Hunspell]
+    container:
+      image: archlinux
+      options: --privileged
+      volumes:
+        - /sys/fs/cgroup:/sys/fs/cgroup
+
+    steps:
+      - uses: actions/download-artifact@v2
+
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
+
+      - name: Display structure of downloaded files
+        run: ls -R
+
+      - name: Create database
+        run: |
+          cd artifact
+          ls -A
+          repo-add repo.db.tar.gz *.pkg.tar.zst
+
+      - name: Upload file
+        uses: jakejarvis/backblaze-b2-action@master
+        env:
+          SOURCE_DIR: './artifact'
+          B2_BUCKET: ${{ secrets.B2_BUCKET }}
+          B2_APPKEY_ID: ${{ secrets.B2_APPKEY_ID }}
+          B2_APPKEY: ${{ secrets.B2_APPKEY }}

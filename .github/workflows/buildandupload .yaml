@@ -1,4 +1,4 @@
-name: Build Arch/Manjaro Package
+name: Build Package and Upload
 
 
 on:

@@ -1,6 +1,3 @@
-[submodule "rstudio"]
-	path = rstudio
-	url = https://aur.archlinux.org/rstudio-desktop-bin.git
 [submodule "google-chrome"]
 	path = google-chrome
 	url = https://aur.archlinux.org/google-chrome.git

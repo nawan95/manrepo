@@ -157,6 +157,13 @@ jobs:
           debug: true
           target: pkgbuild
           pkgname: twinejs/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: |
+            twinejs/*.pkg.tar.zst
+            twinejs/*.md5sum
  
   Build_Hunspell:
     runs-on: ubuntu-latest

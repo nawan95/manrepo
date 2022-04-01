@@ -23,11 +23,6 @@ jobs:
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive
 
-      - name: Update snapshot to Latest commit
-        run: |
-          cd google-chrome
-          git pull --recurse-submodules origin
-
       - name: Validate PKGBUILD
         id: validate-pkgbuild
         uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
@@ -62,11 +57,6 @@ jobs:
 
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive
-
-      - name: Update snapshot to Latest commit
-        run: |
-          cd huggle
-          git pull --recurse-submodules origin
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
@@ -104,11 +94,6 @@ jobs:
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive
 
-      - name: Update snapshot to Latest commit
-        run: |
-          cd rstudio
-          git pull --recurse-submodules origin
-
       - name: Validate PKGBUILD
         id: validate-pkgbuild
         uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
@@ -145,11 +130,6 @@ jobs:
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive
 
-      - name: Update snapshot to Latest commit
-        run: |
-          cd twinejs
-          git pull --recurse-submodules origin
-
       - name: Validate PKGBUILD
         id: validate-pkgbuild
         uses: nawan95/arch-pkgbuild-builder@aa501a7992891e08a85373966f4840abdd315945
@@ -180,11 +160,6 @@ jobs:
 
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive
-
-      - name: Update snapshot to Latest commit
-        run: |
-          cd hunspell-id
-          git pull --recurse-submodules origin
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild

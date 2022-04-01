@@ -18,7 +18,7 @@ jobs:
           submodules: 'true'
 
       - name: Set pull to fast-forward only
-        run: git config --global pull.rebase false
+        run: git config --global pull.rebase true
 
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive

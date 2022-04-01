@@ -18,7 +18,7 @@ jobs:
           submodules: 'true'
 
       - name: Set pull to fast-forward only
-        run: git config pull.ff only
+        run: git config --global pull.ff only
 
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive
@@ -58,7 +58,7 @@ jobs:
         with:
           submodules: 'true'
       - name: Set pull to fast-forward only
-        run: git config pull.ff only
+        run: git config --global pull.ff only
 
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive
@@ -99,7 +99,7 @@ jobs:
           submodules: 'true'
 
       - name: Set pull to fast-forward only
-        run: git config pull.ff only
+        run: git config --global pull.ff only
 
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive
@@ -140,7 +140,7 @@ jobs:
           submodules: 'true'
 
       - name: Set pull to fast-forward only
-        run: git config pull.ff only
+        run: git config --global pull.ff only
 
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive
@@ -176,7 +176,7 @@ jobs:
           submodules: 'true'
 
       - name: Set pull to fast-forward only
-        run: git config pull.ff only
+        run: git config --global pull.ff only
 
       - name: Download snapshot from  AUR
         run: git submodule update --init --recursive
